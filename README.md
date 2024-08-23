@@ -43,7 +43,7 @@ not_allowed_operation = "" + 1
   
   
   
-## 2. Test endpoints with web server  
+## 2. Test web server  
   
 ### 2.1  
 Check the status of the server and whether the model is loaded correctly  
@@ -67,7 +67,7 @@ bash curl_test_endpoint.sh
 ```  
   
   
-## 3 Test endpoints with docker  
+## 3 Test docker  
 
 ### 3.1
 GPU support required additional installation steps:
