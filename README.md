@@ -3,12 +3,15 @@
 This application removes background from jpg, jpeg, JPG, JPEG images and returns a png file without background.  It uses RMBG-1.4 (https://huggingface.co/briaai/RMBG-1.4) based on IS-Net (https://github.com/xuebinqin/DIS) with a unique learning scheme and its own dataset.
   
 ## Installation  
-1. git clone https://github.com/yuragorlo/remove-background.git
-2. python3 -m venv venv  
-3. source ./venv/bin/activate  
-4. pip3 install -r requirements.txt  
-5. python3 app/main.py  
-  
+```
+git clone https://github.com/yuragorlo/remove-background.git
+cd remove-background
+python3 -m venv venv  
+source ./venv/bin/activate  
+pip3 install -r requirements.txt
+mkdir model output_examples  
+python3 app/main.py  
+```
   
   
 ## 1. Test endpoints
