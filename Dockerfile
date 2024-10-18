@@ -1,14 +1,19 @@
-FROM docker.io/nvidia/cuda:11.6.2-base-ubuntu20.04
+FROM public.ecr.aws/lambda/python:3.9
 
-EXPOSE 8080
+# Install system dependencies
+RUN yum install -y gcc python3-devel
 
-WORKDIR /app
+# Set the working directory to /var/task
+WORKDIR /var/task
 
-RUN bash -c 'mkdir -p ./{model,output_examples}'
+# Create necessary directories
+RUN mkdir -p ./model ./output_examples
 
-COPY ./app ./input_examples ./requirements.txt /app/
+# Copy application files and requirements
+COPY ./app ./input_examples ./requirements.txt ./
 
-RUN set -xe && apt-get update -y && apt-get install -y python3-pip
-RUN pip install --no-cache-dir --disable-pip-version-check -r requirements.txt
+# Install Python dependencies
+RUN pip install --no-cache-dir -r requirements.txt
 
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
+# Set the CMD to your handler
+CMD [ "main.lambda_handler" ]
